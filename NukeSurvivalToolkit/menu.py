@@ -8,7 +8,6 @@
 import nuke
 import sys
 import os
-import webbrowser
 
 # Add PluginPaths to tools and icons
 nuke.pluginAddPath('./gizmos')
@@ -33,7 +32,7 @@ NST_helpDoc = "NukeSurvivalToolkit_Documentation_Release_v2.1.0.pdf"
 
 # creating full filepath to the help doc
 NST_helpDoc_os_path = os.path.join(NST_FolderPath, NST_helpDoc)
-NST_helpDocPath = "file:///{}".format(NST_helpDoc_os_path)
+NST_helpDocPath = "file://{}".format(NST_helpDoc_os_path)
 
 
 ############################################################################################################
@@ -48,10 +47,8 @@ m = toolbar.addMenu('NukeSurvivalToolkit', icon = "SurvivalToolkit.png")
 ############################################################################################################
 
 # Create Button to Open NukeSurivalToolkit Documentation
-def openNSTDocumentation():
-    webbrowser.open(NST_helpDocPath)
 
-m.addCommand("Documentation", "openNSTDocumentation()", icon="info_icon.png", index = 00)
+m.addCommand("Documentation", "nukescripts.start('{}').format(NST_helpDocPath), icon="info_icon.png", index = 00)
 
 ############################################################################################################
 ############################################################################################################
